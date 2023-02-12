@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="x-apple-disable-message-reformatting">
+    <title>OTP MAIL</title>
+
+    <!-- Desktop Outlook chokes on web font references and defaults to Times New Roman, so we force a safe fallback font. -->
+    <!--[if mso]>
+        <style>
+            * {
+                font-family: sans-serif !important;
+            }
+        </style>
+    <![endif]-->
+
+    <!--[if !mso]><!-->
+    <!-- insert web font reference, eg: <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'> -->
+    <!--<![endif]-->
+
+    <!--<link th:href="@{/static/css/email.css}" rel="stylesheet" />  -->
+    <!--<link href="email.css" rel="stylesheet" />  -->
+
+    <style th:inline="css">
+        :root {
+            --primary-color: #[[${FIRSTCOLOR}]];
+           /*  --primary-color: #ababab;  */
+        }
+    </style>
+
+</head>
+
+<body width="100%">
+    <center style="width: 100%; text-align: left;">
+        <div>
+            <table role="presentation" id=" bg-image_table" aria-hidden="true" cellspacing="0" cellpadding="0"
+                border="0" align="center" width="600" style="margin: auto; border: 4px solid var(--primary-color);"
+                class="email-container">
+                <tr>
+                    <td class="header-logo" bgcolor="var(--primary-color)">
+                        <img src="logo.png" th:src="|cid:${LOGO}|" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="head-title">
+                        <span th:text="#{MAIL_OTP_MAIL_TITLE}"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="content">
+                        <font style="color: #1e1e1e;">
+                            <span th:text="#{MAIL_OTP_Message}"></span>
+                        </font>
+                    </td>
+                </tr>
+                <tr>
+                    <td bgcolor="" align="center" valign="top" style="padding: 10px;">
+                        <table role="presentation" aria-hidden="true" cellspacing="0" cellpadding="0" border="0"
+                            width="100%">
+                            <tr>
+                                <td class="stack-column-center">
+                                    <table align="center" role="presentation" aria-hidden="true" cellspacing="0"
+                                        cellpadding="0" border="0" style="width: 100%;">
+                                        <tr>
+                                            <td class="center-on-narrow content-body" bgcolor="var(--primary-color)">
+                                               <span th:text="#{MAIL_OTP_Generated}"></span>
+                                            </td>
+
+                                            <td class="center-on-narrow content-value" bgcolor="#f5f5f5">
+                                                <p th:text="${OTP}"></p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="10" style="font-size: 0; line-height: 0; "></td>
+                </tr>
+                <tr>
+                    <td class="wishes">
+                        <span th:text="#{MAIL_Sender_Greetings}"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="company-name">
+                        <span th:text="${COMPANYNAME}"></span>  Team
+                    </td>
+                </tr>
+                <tr>
+                    <td class="support-email">
+                        <span th:text="${SUPPORTEMAIL}"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="x-gmail-data-detectors footer-details" bgcolor="var(--primary-color)">
+                        <font>
+                            <span th:text="#{MAIL_Footer_Queries}"></span><br>
+                        </font>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="x-gmail-data-detectors footer-details-2" bgcolor="var(--primary-color)">
+                        <font><b><span th:text="#{MAIL_Important_Notice}"></span></b></font>
+                        <b><span th:text="#{MAIL_Important_Notice_Msg}"></span></b>
+                    </td>
+                </tr>
+            </table>
+
+            <table role="presentation" aria-hidden="true" cellspacing="0" cellpadding="0" border="0" align="center"
+                width="500" style="margin: auto;" class="email-container">
+                <tr>
+                    <td height="40" style="font-size: 0; line-height: 0;"></td>
+                </tr>
+            </table>
+    </center>
+</body>
+
+</html>

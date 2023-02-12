@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        /*.container {*/
+        /*    border: 2px solid black;*/
+        /*    width: 30%;*/
+        /*}*/
+        /*.header {*/
+        /*    display: flex;*/
+        /*    margin: auto;*/
+        /*}*/
+        h1{
+            display: flex;
+            align-content: center;
+
+        }
+        .title {
+            /*display: flex;*/
+            /*align-items: center;*/
+            /*margin-left: 10%;*/
+        }
+        .label-list{
+            font-weight: bold;
+        }
+
+        .hunter th {
+            background-color: white;
+            color: gray;
+        }
+        .quotation {
+            width: 100%;
+        }
+        .quotation, .quotation th, .quotation td {
+            border: 1px solid brown;
+            border-collapse: collapse;
+        }
+        .quotation th {
+            background-color: brown;
+            color: white;
+        }
+
+        #table_data {
+            font-family: arial, sans-serif;
+            border: 1px solid black;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #table_data td{
+            border: 1px solid black;
+            text-align: left;
+            padding: 8px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="header" style="border-bottom: 2px solid red;">
+<!--    <img th:src="@{https://i.ytimg.com/vi/wdqapiuJmbQ/maxresdefault.jpg}"  width="50" height="50" style="margin-top: 15px">-->
+        <div th:form = "${HEADER}"></div>
+        <th:block th:utext="${HEADER}">header</th:block>
+</div>
+
+<br />
+
+<div class="firstTable">
+    <table id="table_data">
+        <tr>
+            <td th:text="'Name : ' + ${NAME}"></td>
+            <td th:text="'Bill : ' + ${BILL}"></td>
+        </tr>
+        <tr>
+            <td th:text="'Flat No : ' + ${UNIT}"></td>
+            <td th:text="'Bill for the month : ' + ${MONTH}"></td>
+        </tr>
+        <tr>
+            <td th:text="'Flat Area : ' + ${AREA}"></td>
+            <td th:text="'Due Date : ' + ${DUE_DATE}"></td>
+        </tr>
+        <tr>
+            <td th:text="'Email Address : ' + ${EMAIL}"></td>
+            <td th:text="'Contact No : ' + ${MOBILE}"></td>
+        </tr>
+
+    </table>
+</div>
+
+<!--<div class="label-list">-->
+<!--    <div th:text="'Name : ' + ${NAME}"></div>-->
+<!--    <div th:text="'Mobile Number : ' + ${MOBILE}"></div>-->
+<!--    <div th:text="'Wing : ' + ${AREA}"></div>-->
+<!--    <div th:text="'Flat : ' + ${UNIT}"></div>-->
+<!--</div>-->
+<br />
+<table class="quotation">
+    <tr>
+        <th>Sr no.</th>
+        <th>Fees</th>
+        <th>Amount</th>
+    </tr>
+    <tr th:each="item, iterStat: ${FEE}">
+        <td th:text="${iterStat.index + 1}"></td>
+        <td th:text="${item.key}"></td>
+        <td th:text="${item.value}"></td>
+    </tr>
+</table>
+
+<table class="quotation">
+    <tr>
+        <td th:text="'Total Amount'"></td>
+        <td th:text=" ${AMOUNT}"></td>
+    </tr>
+</table>
+
+    <div th:form = "${TERM}">
+        <th:block th:utext="${TERM}">term</th:block>
+    </div>
+
+    <div th:form = "${FOOTER}">
+        <th:block th:utext="${FOOTER}">footer</th:block>
+    </div>
+
+</body>
+</html>
